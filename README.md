@@ -3,7 +3,8 @@ kapow
 =====
 
 KAPOW! 💥💥💥 Detonate your lists, vectors, and data frames, and then flood
-your environment with the remains.
+your environment with the remains. The goal is to make assigning
+varibles from objects as seamless as possible.
 
 ### Installation
 
@@ -26,7 +27,7 @@ ls()
 #> [5] "Species"
 ```
 
-### KAPOW! after a pipe chain
+### KAPOW! with pipes
 
 ``` r
 library(dplyr)

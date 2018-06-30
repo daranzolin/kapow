@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 # kapow
 
 
-KAPOW! `r emo::ji("boom")``r emo::ji("explode")``r emo::ji("explode")` Detonate your lists, vectors, and data frames, and then flood your environment with the remains.
+KAPOW! `r emo::ji("boom")``r emo::ji("explode")``r emo::ji("explode")` Detonate your lists, vectors, and data frames, and then flood your environment with the remains. The goal is to make assigning varibles from objects as seamless as possible.
 
 ### Installation
 
@@ -34,7 +34,7 @@ kapow(iris)
 ls()
 ```
 
-### KAPOW! after a pipe chain
+### KAPOW! with pipes
 
 ```{r, message=FALSE, warning=FALSE}
 library(dplyr)
