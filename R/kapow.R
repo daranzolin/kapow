@@ -15,8 +15,9 @@ kapow <- function(x, ..., list_vars = NULL, obj_prefix_name = FALSE, envir = .Gl
       k <- x
     }
   } else  {
-    stop("x must be a data frame, vector, or list")
+    stop("x must be a data frame, vector, or list.")
   }
+  base_nam <- ""
   if (obj_prefix_name) {
     base_nam <- deparse(substitute(x))
     if (base_nam == ".") {
