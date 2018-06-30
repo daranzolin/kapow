@@ -20,9 +20,9 @@ kapow <- function(x, ..., list_vars = NULL, obj_prefix_name = FALSE, envir = .Gl
   if (is.null(names(x))) stop("x must be a named data frame, vector, or list.", call. = FALSE)
   if (inherits(x, "data.frame")) {
     vars <- rlang::ensyms(...)
-    if (!is.null(vars)) {
+    if (length(vars) > 0) {
       k <- dplyr::select(x, !!!vars)
-      k <- lapply(x, unlist)
+      k <- lapply(k, unlist)
     } else {
       k <- lapply(x, unlist)
     }

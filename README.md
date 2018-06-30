@@ -38,13 +38,10 @@ USArrests %>%
   kapow(Murder, Assault, Large_Urban_Pop, envir = crimeEnv)
 #> Murder assigned to environment.
 #> Assault assigned to environment.
-#> UrbanPop assigned to environment.
-#> Rape assigned to environment.
 #> Large_Urban_Pop assigned to environment.
 
 ls(crimeEnv)
-#> [1] "Assault"         "Large_Urban_Pop" "Murder"          "Rape"           
-#> [5] "UrbanPop"
+#> [1] "Assault"         "Large_Urban_Pop" "Murder"
 ```
 
 ### KAPOW! a list
