@@ -52,5 +52,6 @@ kapow <- function(x, ..., list_vars = NULL, obj_prefix_name = FALSE, envir = .Gl
     assign(nam, k[[i]], envir = envir)
     cat(nam, "assigned to environment.\n")
   }
+  beepr::beep("shotgun")
   invisible(x)
 }
