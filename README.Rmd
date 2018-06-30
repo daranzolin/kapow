@@ -1,0 +1,70 @@
+---
+output:
+  md_document:
+    variant: markdown_github
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "README-"
+)
+```
+
+# kapow
+
+
+KAPOW! `r emo::ji("boom")``r emo::ji("explode")``r emo::ji("explode")` Detonate your lists, vectors, and data frames, and then flood your environment with the remains.
+
+### Installation
+
+
+```{r, eval=FALSE}
+devtools::install_github("daranzolin/kapow")
+```
+
+### KAPOW! a data frame
+
+```{r}
+library(kapow)
+kapow(iris)
+ls()
+```
+
+### KAPOW! after a pipe chain
+
+```{r, message=FALSE, warning=FALSE}
+library(dplyr)
+crimeEnv <- new.env()
+USArrests %>% 
+  filter(Murder > 10) %>% 
+  mutate(Large_Urban_Pop = if_else(UrbanPop > 75, TRUE, FALSE)) %>% 
+  kapow(Murder, Assault, Large_Urban_Pop, envir = crimeEnv)
+
+ls(crimeEnv)
+  
+```
+
+### KAPOW! a list
+
+```{r}
+carsEnv <- new.env()
+cars_list <- as.list(mtcars)
+kapow(cars_list, list_vars = c("cyl", "mpg", "hp"), obj_prefix_name = TRUE, envir = carsEnv)
+
+ls(carsEnv)
+```
+
+### KAPOW! Safety
+
+While explosive, `kapow` is also attentive to your environment and will not overwrite pre-existing values, unless otherwise instructed.
+
+```{r error=TRUE}
+kapow(airquality)
+kapow(airquality)
+kapow(airquality, stop_on_overwrite = FALSE)
+```
+

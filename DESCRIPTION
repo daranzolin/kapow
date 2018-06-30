@@ -1,9 +1,12 @@
 Package: kapow
-Title: What the Package Does (one line, title case)
+Title: kapow detonates objects into variables and assigns them to a particular environment.
 Version: 0.0.0.9000
-Authors@R: person("First", "Last", email = "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+Authors@R: person("David", "Ranzolin", email = "daranzolin@gmail.com", role = c("aut", "cre"))
+Description: It is sometimes a tad cumbersome to extract and assign particular variables from a data frame or list. Towards that end, kapow seamlessly explodes your environments with new variables.
 Depends: R (>= 3.4.1)
-License: What license is it under?
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
+RoxygenNote: 6.0.1
+Imports: dplyr,
+    rlang

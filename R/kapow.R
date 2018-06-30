@@ -1,3 +1,21 @@
+#' KAPOW your objects into an environment of your choice. Each named element of the object becomes
+#' a variable.
+#'
+#' @param x A data frame, list or atomic vector.
+#' @param ... If x is a data frame, the columns you wish to select.
+#' @param list_vars If x is a list or vector, a character vector of names you wish to select.
+#' @param obj_prefix_name If TRUE, kapow will prefix the variables with the object name (where possible).
+#' @param envir The environment the new variables will inhabit.
+#' @param stop_on_overwrite If TRUE, kapow will prevent you from overwriting current variables in the environment.
+#'
+#' @return the same object, invisible.
+#' @export
+#'
+#' @examples
+#' kapow(iris)
+#' kapow(mtcars, mpg, cyl, disp)
+#' aq_list <- as.list(airquality)
+#' kapow(aq_list, list_vars = c("Ozone", "Day", "Month"), obj_prefix_name = FALSE)
 kapow <- function(x, ..., list_vars = NULL, obj_prefix_name = FALSE, envir = .GlobalEnv, stop_on_overwrite = TRUE) {
   if (is.null(names(x))) stop("x must be a named data frame, vector, or list.", call. = FALSE)
   if (inherits(x, "data.frame")) {
@@ -28,10 +46,11 @@ kapow <- function(x, ..., list_vars = NULL, obj_prefix_name = FALSE, envir = .Gl
     nam <- ifelse(base_nam == "",
                   names(k)[i],
                   paste(base_nam, "_", names(k)[i], sep = ""))
-    if (nam %in% ls(envir)) {
+    if (stop_on_overwrite && nam %in% ls(envir)) {
       stop(sprintf("%s already exists in environment.", nam))
     }
     assign(nam, k[[i]], envir = envir)
     cat(nam, "assigned to environment.\n")
   }
+  invisible(x)
 }
