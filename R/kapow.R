@@ -7,6 +7,7 @@
 #' @param obj_prefix_name If TRUE, kapow will prefix the variables with the object name (where possible).
 #' @param envir The environment the new variables will inhabit.
 #' @param stop_on_overwrite If TRUE, kapow will prevent you from overwriting current variables in the environment.
+#' @param theatrics If TRUE, kapow will sound an explosion
 #'
 #' @return the same object, invisible.
 #' @export
@@ -16,7 +17,13 @@
 #' kapow(mtcars, mpg, cyl, disp)
 #' aq_list <- as.list(airquality)
 #' kapow(aq_list, list_vars = c("Ozone", "Day", "Month"), obj_prefix_name = FALSE)
-kapow <- function(x, ..., list_vars = NULL, obj_prefix_name = FALSE, envir = .GlobalEnv, stop_on_overwrite = TRUE) {
+kapow <- function(x,
+                  ...,
+                  list_vars = NULL,
+                  obj_prefix_name = FALSE,
+                  envir = .GlobalEnv,
+                  stop_on_overwrite = TRUE,
+                  theatrics = FALSE) {
   if (is.null(names(x))) stop("x must be a named data frame, vector, or list.", call. = FALSE)
   if (inherits(x, "data.frame")) {
     vars <- rlang::ensyms(...)
@@ -52,6 +59,6 @@ kapow <- function(x, ..., list_vars = NULL, obj_prefix_name = FALSE, envir = .Gl
     assign(nam, k[[i]], envir = envir)
     cat(nam, "assigned to environment.\n")
   }
-  beepr::beep("shotgun")
+  if (theatrics) beepr::beep("shotgun")
   invisible(x)
 }

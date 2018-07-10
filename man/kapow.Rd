@@ -6,7 +6,7 @@
 a variable.}
 \usage{
 kapow(x, ..., list_vars = NULL, obj_prefix_name = FALSE,
-  envir = .GlobalEnv, stop_on_overwrite = TRUE)
+  envir = .GlobalEnv, stop_on_overwrite = TRUE, theatrics = FALSE)
 }
 \arguments{
 \item{x}{A data frame, list or atomic vector.}
@@ -20,6 +20,8 @@ kapow(x, ..., list_vars = NULL, obj_prefix_name = FALSE,
 \item{envir}{The environment the new variables will inhabit.}
 
 \item{stop_on_overwrite}{If TRUE, kapow will prevent you from overwriting current variables in the environment.}
+
+\item{theatrics}{If TRUE, kapow will sound an explosion}
 }
 \value{
 the same object, invisible.
