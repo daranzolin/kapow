@@ -68,3 +68,18 @@ kapow(airquality)
 kapow(airquality, stop_on_overwrite = FALSE)
 ```
 
+### Assign the entire object
+
+Keep the object, lose the destruction.
+
+```{r}
+mtcars %>%
+   filter(cyl == 4) %>%
+   assign_as_is(name = "four_cyl") %>%
+   group_by(am) %>%
+   do(broom::tidy(lm(mpg ~ wt, data = .)))
+
+head(four_cyl)
+```
+
+
