@@ -8,6 +8,7 @@
 #' @param envir The environment the new variables will inhabit.
 #' @param stop_on_overwrite If TRUE, kapow will prevent you from overwriting current variables in the environment.
 #' @param theatrics If TRUE, kapow will sound an explosion
+#' @param messaging If TRUE, kapow will send a message to the console
 #'
 #' @return the same object, invisible.
 #' @export
@@ -23,7 +24,8 @@ kapow <- function(x,
                   obj_prefix_name = FALSE,
                   envir = .GlobalEnv,
                   stop_on_overwrite = TRUE,
-                  theatrics = FALSE) {
+                  theatrics = FALSE,
+                  messaging = TRUE) {
   if (is.null(names(x))) stop("x must be a named data frame, vector, or list.", call. = FALSE)
   if (inherits(x, "data.frame")) {
     vars <- rlang::ensyms(...)
@@ -57,7 +59,7 @@ kapow <- function(x,
       stop(sprintf("%s already exists in environment.", nam))
     }
     assign(nam, k[[i]], envir = envir)
-    cat(nam, "assigned to environment.\n")
+    if (messaging) cat(nam, "assigned to environment.\n")
   }
   if (theatrics) beepr::beep("shotgun")
   invisible(x)

@@ -63,7 +63,7 @@ ls(carsEnv)
 While explosive, `kapow` is also attentive to your environment and will not overwrite pre-existing values, unless otherwise instructed.
 
 ```{r error=TRUE}
-kapow(airquality)
+kapow(airquality, messaging = FALSE)
 kapow(airquality)
 kapow(airquality, stop_on_overwrite = FALSE)
 ```

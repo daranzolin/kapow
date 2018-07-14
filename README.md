@@ -64,13 +64,7 @@ While explosive, `kapow` is also attentive to your environment and will
 not overwrite pre-existing values, unless otherwise instructed.
 
 ``` r
-kapow(airquality)
-#> Ozone assigned to environment.
-#> Solar.R assigned to environment.
-#> Wind assigned to environment.
-#> Temp assigned to environment.
-#> Month assigned to environment.
-#> Day assigned to environment.
+kapow(airquality, messaging = FALSE)
 kapow(airquality)
 #> Error in kapow(airquality): Ozone already exists in environment.
 kapow(airquality, stop_on_overwrite = FALSE)
